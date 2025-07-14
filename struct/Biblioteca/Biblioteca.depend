@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1752504167 source:d:\proyectos verano 2025\repaso sintaxis\librerias.h\struct\biblioteca\main.c
+	<stdio.h>
+	<stdlib.h>
+	"libros.h"
+
+1752503209 d:\proyectos verano 2025\repaso sintaxis\librerias.h\struct\biblioteca\libros.h
+
+1752504064 source:d:\proyectos verano 2025\repaso sintaxis\librerias.h\struct\biblioteca\libros.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"libros.h"
+
