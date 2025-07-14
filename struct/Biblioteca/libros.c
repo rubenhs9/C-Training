@@ -48,3 +48,40 @@ void mostrarLibrosRecientes(Libro* libros, int n){
         printf("Ningún libro registrado es posterior al año 2000.\n");
     }
 }
+
+void eliminarLibro(Libro* libros, int* n) {
+    //Funcion sin realloc
+    if (*n == 0) {
+        printf("No hay libros para borrar.\n");
+        return;
+    }
+
+    mostrarLibrosRecientes(libros, *n);
+
+    int opcion;
+    printf("Selecciona el número del libro que deseas borrar: ");
+    scanf("%d", &opcion);
+
+    if (opcion < 1 || opcion > *n) {
+        printf("Opción inválida.\n");
+        return;
+    }
+
+    int pos = opcion - 1;
+
+    if (pos == *n - 1) {
+        (*n)--;
+    } else {
+        for (int i = pos; i < *n - 1; i++) {
+            libros[i] = libros[i + 1];
+        }
+        (*n)--;
+    }
+
+    printf("Libro eliminado correctamente.\n");
+
+    mostrarLibrosRecientes(libros, *n);
+
+
+    return;
+}

@@ -14,7 +14,8 @@ void crearMenu(){
         printf("\n--- Menú ---\n");
         printf("1. Registrar libros\n");
         printf("2. Mostrar libros recientes\n");
-        printf("3. Salir\n");
+        printf("3. Eliminar libros \n");
+        printf("4. Salir\n");
         printf("Seleccione una opción: ");
         scanf("%d", &opcion);
         getchar();
@@ -38,6 +39,15 @@ void crearMenu(){
                 break;
 
             case 3:
+                if (libros == NULL || n == 0) {
+                    printf("No hay libros registrados.\n");
+                } else {
+                    eliminarLibro(libros, &n);
+                }
+                break;
+
+
+            case 4:
                 printf("Saliendo...\n");
                 break;
 
@@ -45,7 +55,7 @@ void crearMenu(){
                 printf("Opción inválida.\n");
         }
 
-    } while (opcion != 3);
+    } while (opcion != 4);
 
     free(libros);
 }
