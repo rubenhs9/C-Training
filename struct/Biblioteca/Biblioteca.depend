@@ -12,3 +12,16 @@
 	<string.h>
 	"libros.h"
 
+1752510322 source:d:\proyectos verano 2025\repaso sintaxis\c\c-training\struct\biblioteca\libros.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"libros.h"
+
+1752510079 d:\proyectos verano 2025\repaso sintaxis\c\c-training\struct\biblioteca\libros.h
+
+1752509577 source:d:\proyectos verano 2025\repaso sintaxis\c\c-training\struct\biblioteca\main.c
+	<stdio.h>
+	<stdlib.h>
+	"libros.h"
+

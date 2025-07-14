@@ -5,8 +5,18 @@
 #include "libros.h"
 
 
-void registrarLibros(Libro* libros, int n){
-    for(int i=0;i<n;i++){
+Libro* registrarLibros(int* n){
+    printf("¿Cuantos libros va a registrar ?");
+    scanf("%d", n);
+    getchar();
+
+    Libro* libros = (Libro*) malloc((*n)*sizeof(Libro));
+    if(libros == NULL){
+        printf("Error al reservar memoria.\n");
+        return NULL;
+    }
+
+    for(int i=0;i<*n;i++){
         printf("Libro %d\n", i + 1);
 
         printf("Titulo: ");
@@ -21,14 +31,20 @@ void registrarLibros(Libro* libros, int n){
         scanf("%d", &libros[i].anio);
         getchar();
     }
+
+    return libros;
 }
 
 void mostrarLibrosRecientes(Libro* libros, int n){
-
+    printf("\nLibros posteriores al año 2000:\n");
+    int encontrados = 0;
     for(int i=0;i<n;i++){
         if(libros[i].anio>2000){
-            printf("%s (%d) - %s\n", libros[i].titulo, libros[i].anio, libros[i].autor);
+            printf("%d| %s (%d) - %s\n", i+1 ,libros[i].titulo, libros[i].anio, libros[i].autor);
+            encontrados++;
         }
    }
-
+    if (encontrados == 0) {
+        printf("Ningún libro registrado es posterior al año 2000.\n");
+    }
 }
