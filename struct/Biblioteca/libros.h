@@ -7,7 +7,7 @@ typedef struct {
     int anio;
 } Libro;
 
-Libro* registrarLibros(int* n);
+void registrarLibros(Libro** libro, int* n);
 void mostrarLibrosRecientes(Libro* libros, int n);
 void crearMenu();
 void eliminarLibro(Libro* libros, int* n);

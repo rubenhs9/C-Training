@@ -5,34 +5,38 @@
 #include "libros.h"
 
 
-Libro* registrarLibros(int* n){
+void registrarLibros(Libro** libros, int* n){
+    int nuevos;
     printf("¿Cuantos libros va a registrar ?");
-    scanf("%d", n);
+    scanf("%d", &nuevos);
     getchar();
 
-    Libro* libros = (Libro*) malloc((*n)*sizeof(Libro));
-    if(libros == NULL){
+    Libro* temp = realloc(*libros, (*n + nuevos) * sizeof(Libro));
+    if(temp == NULL){
         printf("Error al reservar memoria.\n");
-        return NULL;
+        return;
     }
 
-    for(int i=0;i<*n;i++){
-        printf("Libro %d\n", i + 1);
+    *libros = temp;
 
-        printf("Titulo: ");
-        fgets(libros[i].titulo, sizeof(libros[i].titulo),stdin);
-        libros[i].titulo[strcspn(libros[i].titulo, "\n")] = 0;
+    for(int i=0;i<nuevos;i++){
+        printf("\nLibro %d\n", *n + 1);
+
+        printf("Título: ");
+        fgets((*libros)[*n].titulo, sizeof((*libros)[*n].titulo), stdin);
+        (*libros)[*n].titulo[strcspn((*libros)[*n].titulo, "\n")] = 0;
 
         printf("Autor: ");
-        fgets(libros[i].autor, sizeof(libros[i].autor),stdin);
-        libros[i].autor[strcspn(libros[i].autor, "\n")] = 0;
+        fgets((*libros)[*n].autor, sizeof((*libros)[*n].autor), stdin);
+        (*libros)[*n].autor[strcspn((*libros)[*n].autor, "\n")] = 0;
 
         printf("Año: ");
-        scanf("%d", &libros[i].anio);
+        scanf("%d", &(*libros)[*n].anio);
         getchar();
+
+        (*n)++;
     }
 
-    return libros;
 }
 
 void mostrarLibrosRecientes(Libro* libros, int n){

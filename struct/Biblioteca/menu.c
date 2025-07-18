@@ -22,12 +22,8 @@ void crearMenu(){
 
         switch (opcion) {
             case 1:
-                if (libros != NULL) {
-                    free(libros);
-                    libros = NULL;
-                    n = 0;
-                }
-                libros = registrarLibros(&n);
+
+                registrarLibros(&libros, &n);
                 break;
 
             case 2:
