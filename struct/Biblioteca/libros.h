@@ -10,6 +10,6 @@ typedef struct {
 void registrarLibros(Libro** libro, int* n);
 void mostrarLibrosRecientes(Libro* libros, int n);
 void crearMenu();
-void eliminarLibro(Libro* libros, int* n);
+void eliminarLibro(Libro** libros, int* n);
 
 #endif

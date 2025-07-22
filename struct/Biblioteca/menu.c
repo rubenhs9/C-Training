@@ -38,7 +38,7 @@ void crearMenu(){
                 if (libros == NULL || n == 0) {
                     printf("No hay libros registrados.\n");
                 } else {
-                    eliminarLibro(libros, &n);
+                    eliminarLibro(&libros, &n);
                 }
                 break;
 
