@@ -11,5 +11,7 @@ void registrarLibros(Libro** libro, int* n);
 void mostrarLibrosRecientes(Libro* libros, int n);
 void crearMenu();
 void eliminarLibro(Libro** libros, int* n);
+void guardarLibrosEnFichero(Libro* libros, int n);
+void cargarLibrosDesdeFichero(Libro** libros, int* n);
 
 #endif

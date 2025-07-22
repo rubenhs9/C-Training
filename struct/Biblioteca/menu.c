@@ -9,7 +9,7 @@ void crearMenu(){
     Libro* libros = NULL;
     int n = 0;
     int opcion;
-
+    cargarLibrosDesdeFichero(&libros, &n);
     do {
         printf("\n--- Menú ---\n");
         printf("1. Registrar libros\n");
@@ -24,13 +24,16 @@ void crearMenu(){
             case 1:
 
                 registrarLibros(&libros, &n);
+                guardarLibrosEnFichero(libros, n);
                 break;
+
 
             case 2:
                 if (libros == NULL || n == 0) {
                     printf("No hay libros registrados.\n");
                 } else {
                     mostrarLibrosRecientes(libros, n);
+
                 }
                 break;
 
@@ -39,6 +42,7 @@ void crearMenu(){
                     printf("No hay libros registrados.\n");
                 } else {
                     eliminarLibro(&libros, &n);
+                    guardarLibrosEnFichero(libros, n);
                 }
                 break;
 

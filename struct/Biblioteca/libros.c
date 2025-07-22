@@ -112,3 +112,46 @@ void eliminarLibro(Libro** libros, int* n) {
 
     return;
 }
+
+void guardarLibrosEnFichero(Libro* libros, int n) {
+    FILE* f = fopen("libros.dat", "wb");
+    if (!f) {
+        perror("Error al abrir el fichero");
+        return;
+    }
+    fwrite(&n, sizeof(int), 1, f); //size_t fwrite(const void *ptr, size_t size, size_t count, FILE *stream);
+                                   // El count nos sirve para indicar cuantos valores vamos a agregar a la cabecera.
+                                   // De normal es solo un valor. El numero de registros, pero se podrian agregar mas.
+                                   // Por ejemplo la fecha o version de formato.
+
+    fwrite(libros, sizeof(Libro), n, f);
+    fclose(f);
+}
+
+void cargarLibrosDesdeFichero(Libro** libros, int* n){
+    FILE* f = fopen("libros.dat", "rb");
+    if (!f) {
+        *libros = NULL;
+        *n = 0;
+        return;
+    }
+
+    fread(n, sizeof(int),1,f);
+
+    *libros = malloc(sizeof(Libro) * (*n));
+    if (*libros == NULL) {
+        perror("Error al reservar memoria");
+        fclose(f);
+        return;
+    }
+
+
+    fread(*libros, sizeof(Libro), *n, f);
+    fclose(f);
+
+
+
+}
+
+
+
